@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Playfair SC";
+  src:
+    url("src/assets/Fonts/Playfair_Display_SC") format("woff2"),
+    url("src/assets/Fonts/Playfair_Display_SC") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Playfair SC";
+  src:
+    url("src/assets/Fonts/Playfair_Display_SC") format("woff2"),
+    url("src/assets/Fonts/Playfair_Display_SC") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Apply the font to h1 elements */
+h1 {
+  font-family: "Playfair SC", serif;
+}
