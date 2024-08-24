@@ -21,6 +21,12 @@
 }
 
 /* Apply the font to h1 elements */
-h1 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label {
   font-family: "Playfair SC", serif;
 }
