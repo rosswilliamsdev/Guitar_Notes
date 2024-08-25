@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css"; // Import the CSS for the editor
+import "react-quill/dist/quill.snow.css";
 import "./App.css";
 
 const NewNotes: React.FC = () => {
-  const [date, setDate] = useState<string>(new Date().toLocaleDateString());
+  const [date] = useState<string>(new Date().toLocaleDateString());
+  const [studentName] = useState<string>("John Doe"); // Placeholder
   const [noteContent, setNoteContent] = useState<string>("");
   const [attachments, setAttachments] = useState<File[]>([]);
   const [youtubeUrl, setYoutubeUrl] = useState<string>("");
@@ -17,6 +18,17 @@ const NewNotes: React.FC = () => {
 
   const handleYoutubeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setYoutubeUrl(event.target.value);
+  };
+
+  const handleSave = () => {
+    console.log("Saved:", { date, noteContent, attachments, youtubeUrl });
+    alert("Notes saved successfully!");
+  };
+
+  const handleReset = () => {
+    setNoteContent("");
+    setAttachments([]);
+    setYoutubeUrl("");
   };
 
   const renderYoutubeEmbed = () => {
@@ -38,26 +50,28 @@ const NewNotes: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 bg-white">
-      <h1 className="text-2xl font-bold mb-4">Create New Lesson Notes</h1>
-      <div className="mb-4">
-        <h3 className="block text-lg font text-gray-700">Lesson Date</h3>
+    <div className="container mx-auto p-4 bg-white rounded-xl">
+      <div className="mb-4 flex items-center justify-between">
         <input
           type="text"
           value={date}
           readOnly
-          className="border border-gray-300 p-2 rounded w-full"
+          className="border border-gray-300 p-2 rounded text-center w-32"
         />
+        <h1 className="text-4xl font-bold text-center flex-grow mr-24">
+          Lesson Notes
+        </h1>
+        <span className="text-xl text-gray-700">{studentName}</span>
       </div>
+
       <div className="mb-4">
-        <h3 className="block text-lg text-gray-700">Lesson Content</h3>
         <ReactQuill
           value={noteContent}
           onChange={setNoteContent}
           className="h-64"
         />
       </div>
-      <div className="mb-4">
+      <div className="mb-4 mt-12 w-2/4">
         <label className="block text-gray-700">Attachments</label>
         <input
           type="file"
@@ -75,8 +89,8 @@ const NewNotes: React.FC = () => {
           )}
         </div>
       </div>
-      <div className="mb-4">
-        <label className="block text-gray-700">YouTube Video URL</label>
+      <div className="mb-4 w-1/2">
+        <label className="block text-gray-700">YouTube Link</label>
         <input
           type="text"
           value={youtubeUrl}
@@ -85,6 +99,21 @@ const NewNotes: React.FC = () => {
           className="border border-gray-300 p-2 rounded w-full"
         />
         <div className="mt-4">{renderYoutubeEmbed()}</div>
+      </div>
+
+      <div className="flex justify-between mt-8">
+        <button
+          onClick={handleSave}
+          className="bg-blue-500 text-white py-2 px-8 rounded hover:bg-blue-600"
+        >
+          Save
+        </button>
+        <button
+          onClick={handleReset}
+          className="bg-gray-300 text-gray-700 py-2 px-8 rounded hover:bg-gray-400"
+        >
+          Reset
+        </button>
       </div>
     </div>
   );
