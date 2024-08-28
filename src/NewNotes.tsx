@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "./App.css";
+import Navbar from "./Navbar";
 
 const NewNotes: React.FC = () => {
   const [date] = useState<string>(new Date().toLocaleDateString());
@@ -50,6 +51,8 @@ const NewNotes: React.FC = () => {
   };
 
   return (
+    <div>
+    <Navbar />
     <div className="container mx-auto p-4 bg-white rounded-xl">
       <div className="mb-4 flex items-center justify-between">
         <input
@@ -115,6 +118,7 @@ const NewNotes: React.FC = () => {
           Reset
         </button>
       </div>
+    </div>
     </div>
   );
 };
