@@ -8,7 +8,7 @@ function Login() {
       <div className="min-h-screen flex flex-col items-center justify-center">
         <div className="flex flex-col items-center justify-center p-14 mb-48 bg-white shadow-2xl rounded-3xl ">
           <header className="mb-10">
-            <h1 className="text-6xl font-header font-bold drop-shadow-2xl">
+            <h1 className="text-6xl font-header font-bold">
               Guitar Strategies
             </h1>
           </header>

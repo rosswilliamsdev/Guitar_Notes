@@ -3,6 +3,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "./App.css";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 const NewNotes: React.FC = () => {
   const [date] = useState<string>(new Date().toLocaleDateString());
@@ -52,73 +53,74 @@ const NewNotes: React.FC = () => {
 
   return (
     <div>
-    <Navbar />
-    <div className="container mx-auto p-4 bg-white rounded-xl">
-      <div className="mb-4 flex items-center justify-between">
-        <input
-          type="text"
-          value={date}
-          readOnly
-          className="border border-gray-300 p-2 rounded text-center w-32"
-        />
-        <h1 className="text-4xl font-bold text-center flex-grow mr-24">
-          Lesson Notes
-        </h1>
-        <span className="text-xl text-gray-700">{studentName}</span>
-      </div>
+      <Navbar />
+      <div className="container mx-auto p-4 bg-white rounded-xl">
+        <div className="mb-4 flex items-center justify-between">
+          <input
+            type="text"
+            value={date}
+            readOnly
+            className="border border-gray-300 p-2 rounded text-center w-32"
+          />
+          <h1 className="text-6xl font-bold text-center flex-grow mr-24">
+            Notes
+          </h1>
+          <span className="text-xl text-gray-700">{studentName}</span>
+        </div>
 
-      <div className="mb-4">
-        <ReactQuill
-          value={noteContent}
-          onChange={setNoteContent}
-          className="h-64"
-        />
-      </div>
-      <div className="mb-4 mt-12 w-2/4">
-        <label className="block text-gray-700">Attachments</label>
-        <input
-          type="file"
-          multiple
-          onChange={handleFileChange}
-          className="border border-gray-300 p-2 rounded w-full"
-        />
-        <div>
-          {attachments.length > 0 && (
-            <ul>
-              {attachments.map((file, index) => (
-                <li key={index}>{file.name}</li>
-              ))}
-            </ul>
-          )}
+        <div className="mb-4">
+          <ReactQuill
+            value={noteContent}
+            onChange={setNoteContent}
+            className="h-64"
+          />
+        </div>
+        <div className="mb-4 mt-12 w-2/4">
+          <label className="block text-gray-700">Attachments</label>
+          <input
+            type="file"
+            multiple
+            onChange={handleFileChange}
+            className="border border-gray-300 p-2 rounded w-full"
+          />
+          <div>
+            {attachments.length > 0 && (
+              <ul>
+                {attachments.map((file, index) => (
+                  <li key={index}>{file.name}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+        <div className="mb-4 w-1/2">
+          <label className="block text-gray-700">YouTube Link</label>
+          <input
+            type="text"
+            value={youtubeUrl}
+            onChange={handleYoutubeChange}
+            placeholder="https://www.youtube.com/watch?v=XXXXXX"
+            className="border border-gray-300 p-2 rounded w-full"
+          />
+          <div className="mt-4">{renderYoutubeEmbed()}</div>
+        </div>
+
+        <div className="flex justify-between mt-8">
+          <button
+            onClick={handleSave}
+            className="bg-blue-500 text-white py-2 px-8 rounded hover:bg-blue-600"
+          >
+            Save
+          </button>
+          <button
+            onClick={handleReset}
+            className="bg-gray-300 text-gray-700 py-2 px-8 rounded hover:bg-gray-400"
+          >
+            Reset
+          </button>
         </div>
       </div>
-      <div className="mb-4 w-1/2">
-        <label className="block text-gray-700">YouTube Link</label>
-        <input
-          type="text"
-          value={youtubeUrl}
-          onChange={handleYoutubeChange}
-          placeholder="https://www.youtube.com/watch?v=XXXXXX"
-          className="border border-gray-300 p-2 rounded w-full"
-        />
-        <div className="mt-4">{renderYoutubeEmbed()}</div>
-      </div>
-
-      <div className="flex justify-between mt-8">
-        <button
-          onClick={handleSave}
-          className="bg-blue-500 text-white py-2 px-8 rounded hover:bg-blue-600"
-        >
-          Save
-        </button>
-        <button
-          onClick={handleReset}
-          className="bg-gray-300 text-gray-700 py-2 px-8 rounded hover:bg-gray-400"
-        >
-          Reset
-        </button>
-      </div>
-    </div>
+      <Footer />
     </div>
   );
 };

@@ -2,15 +2,13 @@ import "./App.css";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 
-function Library() {
+function Lessons() {
   return (
     <div>
       <Navbar />
       <div className="container mx-auto p-4 bg-white rounded-xl drop-shadow-2xl">
         <div className="mb-4 items-center">
-          <h1 className="text-6xl font-header font-bold mb-10">
-            Library
-          </h1>
+          <h1 className="text-6xl font-header font-bold mb-10">Lessons</h1>
           <ul className="flex items-center justify-between">
             <li>
               <a>Lesson date</a>
@@ -38,4 +36,4 @@ function Library() {
   );
 }
 
-export default Library;
+export default Lessons;

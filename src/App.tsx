@@ -3,6 +3,7 @@ import Home from "./Home";
 import Login from "./Login";
 import NewNotes from "./NewNotes";
 import Library from "./Library";
+import Lessons from "./Lessons";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/NewNotes" element={<NewNotes />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Library" element={<Library />} />
+        <Route path="/Lessons" element={<Lessons />} />
       </Routes>
     </Router>
   );
