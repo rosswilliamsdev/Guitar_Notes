@@ -1,7 +1,14 @@
 import "./App.css";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
-import { etudes } from "./LibraryFiles";
+import {
+  checklists,
+  etudes,
+  chords,
+  solos,
+  scales,
+  exercises,
+} from "./LibraryFiles";
 
 function Library() {
   function listEntries<T extends string | undefined>(items: {
@@ -32,33 +39,25 @@ function Library() {
               <h3 className="text-2xl font-header font-bold text-left mb-2">
                 Checklists
               </h3>
-              <ul className="w-full text-left">
-                <li>List of pdfs clickable to view/print</li>
-              </ul>
+              <ul className="w-full text-left">{listEntries(checklists)}</ul>
             </div>
             <div className="mb-4">
               <h3 className="text-2xl font-header font-bold text-left mb-2">
                 Scales
               </h3>
-              <ul className="w-full text-left">
-                <li>List of pdfs clickable to view/print</li>
-              </ul>
+              <ul className="w-full text-left">{listEntries(scales)}</ul>
             </div>
             <div className="mb-4">
               <h3 className="text-2xl font-header font-bold text-left mb-2">
                 Solos
               </h3>
-              <ul className="w-full text-left">
-                <li>List of pdfs clickable to view/print</li>
-              </ul>
+              <ul className="w-full text-left">{listEntries(solos)}</ul>
             </div>
             <div className="mb-4">
               <h3 className="text-2xl font-header font-bold text-left mb-2">
                 Exercises
               </h3>
-              <ul className="w-full text-left">
-                <li>List of pdfs clickable to view/print</li>
-              </ul>
+              <ul className="w-full text-left">{listEntries(exercises)}</ul>
             </div>
             <div className="mb-4">
               <h3 className="text-2xl font-header font-bold text-left mb-2">
@@ -70,9 +69,7 @@ function Library() {
               <h3 className="text-2xl font-header font-bold text-left mb-2">
                 Chords
               </h3>
-              <ul className="w-full text-left">
-                <li>List of pdfs clickable to view/print</li>
-              </ul>
+              <ul className="w-full text-left">{listEntries(chords)}</ul>
             </div>
           </div>
         </div>
