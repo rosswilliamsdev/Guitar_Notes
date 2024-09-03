@@ -5,6 +5,7 @@ import NewNotes from "./NewNotes";
 import Library from "./Library";
 import Lessons from "./Lessons";
 import Policy from "./Policy";
+import StudentForm from "./StudentForm";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/Library" element={<Library />} />
         <Route path="/Lessons" element={<Lessons />} />
         <Route path="/Policy" element={<Policy />} />
+        <Route path="/StudentForm" element={<StudentForm />} />
       </Routes>
     </Router>
   );

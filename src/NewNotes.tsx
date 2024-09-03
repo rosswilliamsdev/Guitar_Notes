@@ -4,10 +4,12 @@ import "react-quill/dist/quill.snow.css";
 import "./App.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import axios from "axios";
 
 const NewNotes: React.FC = () => {
   const [date] = useState<string>(new Date().toLocaleDateString());
   const [studentName] = useState<string>("John Doe"); // Placeholder
+  const [studentId, setStudentId] = useState(1);
   const [noteContent, setNoteContent] = useState<string>("");
   const [attachments, setAttachments] = useState<File[]>([]);
   const [youtubeUrl, setYoutubeUrl] = useState<string>("");
@@ -22,10 +24,31 @@ const NewNotes: React.FC = () => {
     setYoutubeUrl(event.target.value);
   };
 
-  const handleSave = () => {
-    console.log("Saved:", { date, noteContent, attachments, youtubeUrl });
-    alert("Notes saved successfully!");
+  const handleSave = async () => {
+    const formData = new FormData();
+    formData.append("date", date);
+    formData.append("studentName", studentName);
+    formData.append("noteContent", noteContent);
+    formData.append("youtubeUrl", youtubeUrl);
+
+    attachments.forEach((file, index) => {
+      formData.append(`attachments[${index}]`, file);
+    });
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5058/api/LessonNotes",
+        formData,
+        { headers: { "Content-Type": "multipart/form-data" } }
+      );
+      console.log("Note saved:", response.data);
+      alert("Notes saved successfully!");
+    } catch (error) {
+      console.error("Error saving note:", error);
+      alert("Failed to save note.");
+    }
   };
+
 
   const handleReset = () => {
     setNoteContent("");
