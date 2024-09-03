@@ -9,7 +9,6 @@ import axios from "axios";
 const NewNotes: React.FC = () => {
   const [date] = useState<string>(new Date().toLocaleDateString());
   const [studentName] = useState<string>("John Doe"); // Placeholder
-  const [studentId, setStudentId] = useState(1);
   const [noteContent, setNoteContent] = useState<string>("");
   const [attachments, setAttachments] = useState<File[]>([]);
   const [youtubeUrl, setYoutubeUrl] = useState<string>("");
@@ -48,7 +47,6 @@ const NewNotes: React.FC = () => {
       alert("Failed to save note.");
     }
   };
-
 
   const handleReset = () => {
     setNoteContent("");
