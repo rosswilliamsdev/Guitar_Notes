@@ -1,0 +1,2 @@
+# Ensure that text files use LF in the repository, but are checked out as CRLF on Windows
+* text=auto
